@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(to right, #0f172a, #1e293b);
+  color: white;
+}
+
+.navbar {
+  width: 100%;
+  padding: 20px 60px;
+  background: #0b1120;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
