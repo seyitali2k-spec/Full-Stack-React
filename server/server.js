@@ -1,6 +1,10 @@
 import express from "express";
 import cors from "cors";
 import pkg from "pg";
+import dotenv from "dotenv";
+dotenv.config();
+
+console.log("DATABASE_URL:", process.env.DATABASE_URL);
 
 const { Pool } = pkg;
 
@@ -13,14 +17,15 @@ connectionString: process.env.DATABASE_URL,
 });
 
 
-
 app.get("/games", async (req, res) => {
 try {
-    const result = await pool.query("SELECT NOW()");
-    res.json(result.rows);
+const result = await pool.query(
+"SELECT * FROM games ORDER BY created_at DESC"
+);
+res.json(result.rows);
 } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: err.message });
+console.error(err);
+res.status(500).json({ error: "Failed to fetch games" });
 }
 });
 
